@@ -1,0 +1,13 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: worker-gateway
+spec: 
+    rules:
+        - host: "worker.shikloshi.io"
+          http:
+              paths:
+                  - backend:
+                      serviceName: worker-v1
+                      servicePort: 4000
