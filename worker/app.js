@@ -14,7 +14,9 @@ app.get('/', (req, res) => {
 app.get('/work', async (req, res) => {
     const start = Date.now();
     for (let i = 0; i < numOfMeeting; i++) {
-        await goToMeeting();
+        console.log('[DEBUG] going into meeting' + i);
+        const res = await goToMeeting();
+        console.log('[DEBUG] meeting-v1 service respond with: ' + res.status);
     }
     const end = Date.now();
     res.json({ duration: end - start})
@@ -22,9 +24,8 @@ app.get('/work', async (req, res) => {
 
 async function goToMeeting() {
     try {
-        //const res = await fetch('http://localhost:3000/meeting');
-        const res = await fetch('http://meeting-v1:3000/meeting');
-        console.log("Status from meeting: " + res.status);
+        return await fetch('http://localhost:3000/meeting');
+        //return await fetch('http://meeting-v1:3000/meeting');
         //return res;
     } catch (e) {
         console.error(e);
