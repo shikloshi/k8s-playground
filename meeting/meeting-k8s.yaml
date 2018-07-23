@@ -31,6 +31,6 @@ spec:
             containers:
                 - name: meeting-v1
                   image: gcr.io/optimistic-yew-208712/meeting:0.0.2
-                  #image: $IMAGE
+                  image: $MEETING_IMAGE
                   ports:
                       - containerPort: 3000
