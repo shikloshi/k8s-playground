@@ -30,7 +30,6 @@ spec:
         spec:
             containers:
                 - name: worker-v1
-                  #image: gcr.io/optimistic-yew-208712/worker:0.0.5
                   image: IMAGE
                   ports:
                       - containerPort: 4000
