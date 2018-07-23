@@ -30,6 +30,7 @@ spec:
         spec:
             containers:
                 - name: meeting-v1
-                  image: gcr.io/optimistic-yew-208712/meeting:0.0.2
+                  #image: gcr.io/optimistic-yew-208712/meeting:0.0.2
+                  image: my_test_for_once
                   ports:
                       - containerPort: 3000
