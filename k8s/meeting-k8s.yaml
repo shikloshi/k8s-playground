@@ -6,7 +6,7 @@ metadata:
 spec: 
     selector:
         app: meeting
-    type: NodePort
+    #type: NodePort
     ports:
         - port: 3000
           targetPort: 3000
@@ -30,6 +30,6 @@ spec:
         spec:
             containers:
                 - name: meeting-v1
-                  image: my_test_for_once
+                  image: gcr.io/feisty-catcher-208711/meeting:0.0.1
                   ports:
                       - containerPort: 3000

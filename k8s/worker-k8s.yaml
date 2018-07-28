@@ -6,7 +6,8 @@ metadata:
 spec: 
     selector:
         app: worker
-    type: NodePort
+    #type: LoadBalancer
+    #type: NodePort
     ports:
         - port: 4000
           targetPort: 4000
@@ -30,6 +31,6 @@ spec:
         spec:
             containers:
                 - name: worker-v1
-                  image: IMAGE
+                  image: gcr.io/feisty-catcher-208711/worker:0.0.1
                   ports:
                       - containerPort: 4000

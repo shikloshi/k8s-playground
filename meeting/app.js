@@ -4,6 +4,13 @@ const app = express();
 
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+    res.json({ ok: 1 });
+});
+
+app.get('/health', (req, res) => {
+    res.json({ ok: 1 });
+});
 
 app.get('/meeting', (req, res) => {
     const start = Date.now();

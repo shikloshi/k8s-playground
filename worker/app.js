@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
     res.json({ status: "okay"})
 });
 
+app.get('/health', (req, res) => {
+    res.json({ status: "okay"})
+});
+
 app.get('/work', async (req, res) => {
     const start = Date.now();
     for (let i = 0; i < numOfMeeting; i++) {
