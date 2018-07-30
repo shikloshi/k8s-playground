@@ -19,7 +19,7 @@ app.get('/meeting', (req, res) => {
         const now = Date.now();
         console.log('[DEBUG] finished a meeting')
         res.json({ duration: now - start });
-    }, 250);
+    }, 5);
 });
 
 

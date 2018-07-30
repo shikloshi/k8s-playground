@@ -16,6 +16,8 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/work', async (req, res) => {
+    console.log('[DEBUG] request hit the /work endpoint');
+    // TODO: add header for easy return here
     const start = Date.now();
     for (let i = 0; i < numOfMeeting; i++) {
         console.log('[DEBUG] going into meeting' + i);
@@ -28,8 +30,8 @@ app.get('/work', async (req, res) => {
 
 async function goToMeeting() {
     try {
-        return await fetch('http://localhost:3000/meeting');
-        //return await fetch('http://meeting-v1:3000/meeting');
+        //return await fetch('http://localhost:3000/meeting');
+        return await fetch('http://meeting-v1:3000/meeting');
         //return res;
     } catch (e) {
         console.error(e);

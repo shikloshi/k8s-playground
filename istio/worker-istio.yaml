@@ -26,9 +26,9 @@ spec:
   http:
   - match:
     - uri:
-        exact: *
+        exact: /work
     route:
     - destination:
-        host: worker
+        host: worker-v1
         port:
           number: 4000

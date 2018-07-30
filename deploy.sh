@@ -4,22 +4,23 @@ set -ex
 
 prefix="gcr.io"
 
-if [[ "$#" -ne 2 ]]; then
-    echo "should specify service name and tag"
+if [[ "$#" -ne 1 ]]; then
+    echo "should specify service tag"
     exit 1
 fi
 
-service_name=$1
-tag=$2
+#service_name=$1
+tag=$1
 
 if [[ -z $PROJECT_ID ]]; then
     p=$(gcloud projects list | tail -1 | cut -d" " -f1)
     export PROJECT_ID=$p
-    image_full_name=$prefix/$PROJECT_ID/${service_name}:${tag}
+    repository=$prefix/$PROJECT_ID
 else
-    image_full_name=$prefix/$PROJECT_ID/${service_name}:${tag}
+    repository=$prefix/$PROJECT_ID
 fi
 
-docker build -t $image_full_name $PWD/$service_name && docker push $image_full_name
+docker build -t $repository/meeting:$tag $PWD/meeting && docker push $repository/meeting:$tag
+docker build -t $repository/worker:$tag $PWD/worker && docker push $repository/worker:$tag
 
 #sed -i -e "s@IMAGE@${image_full_name}@" ./k8s/$service_name-k8s.yaml

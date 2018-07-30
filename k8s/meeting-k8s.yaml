@@ -30,6 +30,6 @@ spec:
         spec:
             containers:
                 - name: meeting-v1
-                  image: gcr.io/feisty-catcher-208711/meeting:0.0.1
+                  image: gcr.io/feisty-catcher-208711/meeting:0.0.3
                   ports:
                       - containerPort: 3000
