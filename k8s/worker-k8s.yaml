@@ -29,6 +29,6 @@ spec:
         spec:
             containers:
                 - name: worker-v1
-                  image: gcr.io/feisty-catcher-208711/worker:0.0.3
+                  image: gcr.io/feisty-catcher-208711/worker:0.0.4
                   ports:
                       - containerPort: 4000

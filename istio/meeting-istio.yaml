@@ -20,15 +20,13 @@ metadata:
   name: meeting-v1
 spec:
   hosts:
-  - "*"
-  gateways:
-  - meeting-gateway
+  - "meeting-v1"
   http:
-  - match:
-    - uri:
-        exact: /meeting
-    route:
-    - destination:
-        host: meeting-v1
-        port:
-          number: 3000
+  #- match:
+  #- uri:
+  #exact: /meeting
+      - route:
+          - destination:
+              host: meeting-v1
+              port:
+                  number: 3000
