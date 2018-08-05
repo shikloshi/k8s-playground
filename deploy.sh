@@ -20,7 +20,7 @@ else
     repository=$prefix/$PROJECT_ID
 fi
 
-docker build -t $repository/meeting:$tag $PWD/meeting && docker push $repository/meeting:$tag
-docker build -t $repository/worker:$tag $PWD/worker && docker push $repository/worker:$tag
+docker build -t $repository/meeting:$tag $PWD/meeting/meeting-node && docker push $repository/meeting:$tag
+docker build -t $repository/worker:$tag $PWD/worker/worker-node  && docker push $repository/worker:$tag
 
 #sed -i -e "s@IMAGE@${image_full_name}@" ./k8s/$service_name-k8s.yaml

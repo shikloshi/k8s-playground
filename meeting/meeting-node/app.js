@@ -2,6 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
+const { createLogger, format, transports } = require('winston');
+const { json, combine, timestamp, label, prettyPrint } = format;
+
+const logger = createLogger({
+    level: 'debug',
+    format: combine(
+        timestamp(),
+        prettyPrint(),
+    ),
+    transports: new transports.Console(),
+});
+
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -14,14 +26,14 @@ app.get('/health', (req, res) => {
 
 app.get('/meeting', (req, res) => {
     const start = Date.now();
-    console.log('[DEBUG] starting a meeting')
+    logger.debug('starting a meeting')
     setTimeout(() => {
         const now = Date.now();
-        console.log('[DEBUG] finished a meeting')
+        logger.debug('finished a meeting')
         res.json({ duration: now - start });
     }, 5);
 });
 
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Running on port: ${port}`));
+app.listen(port, () => logger.info(`Running on port: ${port}`));

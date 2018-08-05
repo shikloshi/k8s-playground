@@ -4,6 +4,7 @@ kind: Service
 metadata:
     name: worker-v1
 spec: 
+    #type: LoadBalancer
     selector:
         app: worker
     ports:
@@ -28,7 +29,11 @@ spec:
                 app: worker
         spec:
             containers:
-                - name: worker-v1
-                  image: gcr.io/feisty-catcher-208711/worker:0.0.4
+                - env:
+                    - name: MEETING_HOST
+                      value: "meeting-v1"
+                  name: worker-v1
+                  #image: gcr.io/feisty-catcher-208711/worker:0.0.7
+                  image: shikloshi/worker:0.0.1
                   ports:
                       - containerPort: 4000

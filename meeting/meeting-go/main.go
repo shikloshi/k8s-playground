@@ -37,7 +37,7 @@ func goToMeeting(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	port := getEnvWithDefault("PORT", "3001")
+	port := getEnvWithDefault("PORT", "3000")
 
 	log.Infof("Going to start meeting-v1 service on port: %s", port)
 
